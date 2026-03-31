@@ -1,0 +1,1 @@
+python train.py --data data/worker.yaml --cfg yolov5n.yaml --weights 'yolov5n.pt' --batch-size 16

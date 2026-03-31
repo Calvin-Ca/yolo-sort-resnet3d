@@ -1,0 +1,7 @@
+TensorFlow installation not found - running with reduced feature set.
+/home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.33' not found (required by /home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server)
+/home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.34' not found (required by /home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server)
+/home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by /home/p/miniconda3/envs/itf-dev/lib/python3.9/site-packages/tensorboard_data_server/bin/server)
+TensorBoard 2.14.0 at http://0.0.0.0:6006/ (Press CTRL+C to quit)
+W1122 11:18:52.386641 140631093810944 plugin_event_multiplexer.py:267] Deleting accumulator 'yolov8/worker.640.yolov8n.pt'
+TensorBoard caught SIGTERM; exiting...

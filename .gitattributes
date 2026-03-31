@@ -1,0 +1,9 @@
+# 所有 .pt、.onnx、.pth 文件：
+# → 用 LFS 存储大文件
+# → 不参与 diff
+# → 不参与 merge
+# → 不做文本处理
+
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text

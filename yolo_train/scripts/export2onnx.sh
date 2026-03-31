@@ -1,0 +1,1 @@
+python export.py --weights $1 --include onnx 

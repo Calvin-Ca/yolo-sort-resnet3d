@@ -1,0 +1,14 @@
+python VHval.py \
+    --weights ./runs/train/TEST4-23.pt/weights/best.pt \
+    --data ../data/worker_demo.yaml \
+    --img 1280 \
+    --batch-size 16 \
+    --conf-thres 0.001 \
+    --iou-thres 0.8 \
+    --device cpu \
+    --project runs/my_validation \
+    --name $(date +%Y%m%d_%H%M%S) \
+    --save-txt \
+    --save-conf \
+    --save-json \
+    --verbose \
