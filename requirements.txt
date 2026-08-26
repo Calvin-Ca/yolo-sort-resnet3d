@@ -1,0 +1,13 @@
+filterpy
+h5py
+munch
+numpy
+onnxruntime-gpu
+opencv-python
+Pillow
+scipy
+tensorboard
+torch
+torchvision
+transformers
+xlsxwriter
