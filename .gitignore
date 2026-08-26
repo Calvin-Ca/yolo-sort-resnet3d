@@ -1,6 +1,6 @@
 _pycache_/
 data/
 dataset/
-yolo_train/runs/
+yolo/runs/
 *.avi
 *.mp4
