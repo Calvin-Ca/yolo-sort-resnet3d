@@ -33,15 +33,19 @@ Construction worker detection, tracking and action recognition from video stream
 
 ## 处理流程
 
-```mermaid
-flowchart LR
-    A[MP4 / RTSP] --> B[YOLO ONNX<br/>工人检测]
-    B --> C[SORT<br/>多目标跟踪]
-    C --> D[轨迹缓存与<br/>人员片段裁剪]
-    D --> E[3D ResNet<br/>动作识别]
-    E --> F[标注视频]
-    E --> G[逐帧 JSON]
-    E --> H[工时 Excel]
+```text
+MP4 / RTSP
+    ↓
+YOLO ONNX 工人检测
+    ↓
+SORT 多目标跟踪
+    ↓
+轨迹缓存与人员片段裁剪
+    ↓
+3D ResNet 动作识别
+    ├── 标注视频
+    ├── 逐帧 JSON
+    └── 工时 Excel
 ```
 
 ## 动作类别
@@ -131,4 +135,3 @@ YOLOv5 和 YOLOv8 训练代码位于 [`yolo/`](yolo/)，项目脚本位于 [`yol
 - 完整 workflow 当前按 CUDA 设备编号初始化，运行前请确认 PyTorch 与 ONNX Runtime 能识别 GPU。
 - Linux 输出依赖 `/usr/bin/ffmpeg`；Windows 版本需要根据本机安装位置调整 FFmpeg 路径。
 - 模型、训练数据和视频文件体积较大，请使用 Git LFS 或外部数据存储管理。
-
