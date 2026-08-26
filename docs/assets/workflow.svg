@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="520" viewBox="0 0 1440 520" role="img" aria-labelledby="title desc">
+  <title id="title">YOLO SORT 3D ResNet 处理流程</title>
+  <desc id="desc">视频经过工人检测、多目标跟踪、人员片段裁剪和动作识别，最终输出标注视频、逐帧 JSON 与工时 Excel。</desc>
+
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#eef4ff"/>
+    </linearGradient>
+    <linearGradient id="primary" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset="1" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="8" stdDeviation="9" flood-color="#1e3a8a" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 15px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .step { font: 700 18px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #0f172a; }
+      .detail { font: 400 14px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #64748b; }
+      .step-light { font: 700 18px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .detail-light { font: 400 14px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #dbeafe; }
+      .output { font: 600 16px Inter, "Noto Sans SC", "Microsoft YaHei", sans-serif; fill: #1e293b; }
+      .index { font: 700 12px Inter, sans-serif; fill: #2563eb; }
+      .connector { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1440" height="520" rx="24" fill="url(#background)"/>
+  <text x="56" y="60" class="title">施工现场视频智能分析流程</text>
+  <text x="56" y="88" class="subtitle">Detection → Tracking → Clip Extraction → Action Recognition</text>
+
+  <path class="connector" d="M 246 248 H 288"/>
+  <path class="connector" d="M 508 248 H 550"/>
+  <path class="connector" d="M 770 248 H 812"/>
+  <path class="connector" d="M 1032 248 H 1074"/>
+
+  <g filter="url(#shadow)">
+    <rect x="46" y="170" width="200" height="156" rx="18" fill="#ffffff" stroke="#bfdbfe" stroke-width="2"/>
+    <circle cx="76" cy="199" r="16" fill="#dbeafe"/>
+    <text x="76" y="203" text-anchor="middle" class="index">01</text>
+    <rect x="76" y="222" width="42" height="31" rx="4" fill="none" stroke="#2563eb" stroke-width="3"/>
+    <path d="M 118 232 L 133 224 V 251 L 118 243 Z" fill="#2563eb"/>
+    <text x="146" y="274" text-anchor="middle" class="step">视频输入</text>
+    <text x="146" y="299" text-anchor="middle" class="detail">MP4 / RTSP</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="288" y="170" width="220" height="156" rx="18" fill="url(#primary)"/>
+    <circle cx="318" cy="199" r="16" fill="#ffffff" fill-opacity="0.18"/>
+    <text x="318" y="203" text-anchor="middle" style="font:700 12px Inter,sans-serif;fill:#fff">02</text>
+    <rect x="379" y="216" width="40" height="44" rx="4" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <path d="M 369 226 H 379 M 369 250 H 379 M 419 226 H 429 M 419 250 H 429" stroke="#ffffff" stroke-width="3"/>
+    <text x="398" y="274" text-anchor="middle" class="step-light">YOLO ONNX</text>
+    <text x="398" y="299" text-anchor="middle" class="detail-light">工人目标检测</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="550" y="170" width="220" height="156" rx="18" fill="#ffffff" stroke="#c7d2fe" stroke-width="2"/>
+    <circle cx="580" cy="199" r="16" fill="#e0e7ff"/>
+    <text x="580" y="203" text-anchor="middle" class="index">03</text>
+    <circle cx="637" cy="231" r="10" fill="#6366f1"/>
+    <circle cx="681" cy="231" r="10" fill="#6366f1"/>
+    <path d="M 647 231 H 671 M 660 231 V 254" stroke="#6366f1" stroke-width="3"/>
+    <text x="660" y="274" text-anchor="middle" class="step">SORT</text>
+    <text x="660" y="299" text-anchor="middle" class="detail">多目标跟踪与 ID 关联</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="812" y="170" width="220" height="156" rx="18" fill="#ffffff" stroke="#fed7aa" stroke-width="2"/>
+    <circle cx="842" cy="199" r="16" fill="#ffedd5"/>
+    <text x="842" y="203" text-anchor="middle" style="font:700 12px Inter,sans-serif;fill:#ea580c">04</text>
+    <path d="M 905 218 H 927 V 240 M 939 218 H 961 V 240 M 905 252 V 262 H 927 M 939 262 H 961 V 252" stroke="#f97316" stroke-width="3" fill="none"/>
+    <text x="922" y="274" text-anchor="middle" class="step">轨迹片段裁剪</text>
+    <text x="922" y="299" text-anchor="middle" class="detail">缓存、平滑与人员居中</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1074" y="170" width="220" height="156" rx="18" fill="url(#accent)"/>
+    <circle cx="1104" cy="199" r="16" fill="#ffffff" fill-opacity="0.18"/>
+    <text x="1104" y="203" text-anchor="middle" style="font:700 12px Inter,sans-serif;fill:#fff">05</text>
+    <circle cx="1184" cy="235" r="21" fill="none" stroke="#ffffff" stroke-width="3"/>
+    <path d="M 1174 235 L 1181 242 L 1195 227" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1184" y="274" text-anchor="middle" class="step-light">3D ResNet</text>
+    <text x="1184" y="299" text-anchor="middle" style="font:400 14px Inter,'Noto Sans SC','Microsoft YaHei',sans-serif;fill:#ffedd5">时序动作识别</text>
+  </g>
+
+  <path d="M 1184 326 V 368 H 360 V 394" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+  <path d="M 1184 368 H 720 V 394" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+  <path d="M 1184 368 V 394" stroke="#94a3b8" stroke-width="2.5" fill="none"/>
+
+  <g filter="url(#shadow)">
+    <rect x="245" y="394" width="230" height="72" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <circle cx="279" cy="430" r="16" fill="#dbeafe"/>
+    <path d="M 272 423 L 288 430 L 272 437 Z" fill="#2563eb"/>
+    <text x="305" y="436" class="output">标注视频</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="605" y="394" width="230" height="72" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <circle cx="639" cy="430" r="16" fill="#ede9fe"/>
+    <text x="639" y="435" text-anchor="middle" style="font:700 11px monospace;fill:#7c3aed">{ }</text>
+    <text x="665" y="436" class="output">逐帧 JSON</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="1069" y="394" width="230" height="72" rx="16" fill="#ffffff" stroke="#cbd5e1"/>
+    <circle cx="1103" cy="430" r="16" fill="#dcfce7"/>
+    <path d="M 1095 422 H 1111 V 438 H 1095 Z M 1095 428 H 1111 M 1103 422 V 438" stroke="#16a34a" stroke-width="2" fill="none"/>
+    <text x="1129" y="436" class="output">工时 Excel</text>
+  </g>
+</svg>

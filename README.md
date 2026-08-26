@@ -33,20 +33,7 @@ Construction worker detection, tracking and action recognition from video stream
 
 ## 处理流程
 
-```text
-MP4 / RTSP
-    ↓
-YOLO ONNX 工人检测
-    ↓
-SORT 多目标跟踪
-    ↓
-轨迹缓存与人员片段裁剪
-    ↓
-3D ResNet 动作识别
-    ├── 标注视频
-    ├── 逐帧 JSON
-    └── 工时 Excel
-```
+![施工现场视频智能分析流程](docs/assets/workflow.svg)
 
 ## 动作类别
 
