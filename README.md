@@ -115,6 +115,10 @@ YOLOv5 和 YOLOv8 训练代码位于 [`yolo/`](yolo/)，项目脚本位于 [`yol
 
 ## 边缘设备测试
 
+DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
+[`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)，
+包含基线、同步/异步 Action 推理和时序降采样对比。
+
 [`yolo/edge_pt/report/`](yolo/edge_pt/report/) 保存了不同模型、输入尺寸和批量大小在 Jetson Nano、Xavier NX、PC 等设备上的测试结果，可用于部署选型。
 
 ## 注意事项
