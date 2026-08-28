@@ -1,4 +1,4 @@
-# Jetson 边缘设备端到端测试
+# 边缘计算设备 Jetson Orin NX 实测
 
 ## 测试环境
 
