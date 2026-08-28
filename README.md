@@ -119,6 +119,18 @@ DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 [`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)，
 包含基线、同步/异步 Action 推理和时序降采样对比。
 
+### Jetson Orin NX 实测结果（2026-08-28）
+
+| 管线 | 端到端 FPS | 状态 |
+|---|---:|---|
+| YOLO + NvSORT 基线 | **35.93** | 成功 |
+| YOLO + NvSORT + 3D Action（同步） | **22.96** | 成功 |
+| Action 异步推理 | 22.64 | 未提速 |
+| 时序隔帧采样（subsample=1） | 22.25 | 未提速 |
+
+测试输入为 2490×1400、301 帧 H.264 视频；同步 3D Action 管线检测
+1386 个目标、跟踪目标数为 6，`roi_restore_misses=0`。
+
 [`yolo/edge_pt/report/`](yolo/edge_pt/report/) 保存了不同模型、输入尺寸和批量大小在 Jetson Nano、Xavier NX、PC 等设备上的测试结果，可用于部署选型。
 
 ## 注意事项
