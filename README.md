@@ -112,7 +112,7 @@ DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 [`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)，
 包含基线、同步/异步 Action 推理和时序降采样对比。
 
-### Jetson Orin NX 实测结果（2026-08-28）
+### Jetson Orin NX 实测结果
 
 环境：JetPack 5.1.1 / L4T 35.3.1、CUDA 11.4、TensorRT 8.5.2、DeepStream 6.2；输入为 H.264、2490×1400、10 FPS、约 30.1 秒（301 帧）。
 

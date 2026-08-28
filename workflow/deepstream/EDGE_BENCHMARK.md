@@ -1,7 +1,5 @@
 # Jetson 边缘设备端到端测试
 
-测试日期：2026-08-28
-
 ## 测试环境
 
 - 设备：NVIDIA Jetson Orin NX Developer Kit
