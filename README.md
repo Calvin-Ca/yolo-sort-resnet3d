@@ -37,17 +37,10 @@ Construction worker detection, tracking and action recognition from video stream
 
 ## 动作类别
 
-| ID | Action | 含义 |
-|---:|---|---|
-| 0 | `clean` | 清理 |
-| 1 | `concrete` | 混凝土作业 |
-| 2 | `formwork` | 模板作业 |
-| 3 | `prepare` | 准备 |
-| 4 | `rebar` | 钢筋作业 |
-| 5 | `rest/talk` | 休息或交谈 |
-| 6 | `scaffold` | 脚手架作业 |
-| 7 | `transport` | 运输 |
-| 8 | `walk` | 行走 |
+| ID | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+|---|---|---|---|---|---|---|---|---|---|
+| Action | `clean` | `concrete` | `formwork` | `prepare` | `rebar` | `rest/talk` | `scaffold` | `transport` | `walk` |
+| 含义 | 清理 | 混凝土作业 | 模板作业 | 准备 | 钢筋作业 | 休息或交谈 | 脚手架作业 | 运输 | 行走 |
 
 ## 目录结构
 
@@ -123,12 +116,12 @@ DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 
 环境：JetPack 5.1.1 / L4T 35.3.1、CUDA 11.4、TensorRT 8.5.2、DeepStream 6.2；输入为 H.264、2490×1400、10 FPS、约 30.1 秒（301 帧）。
 
-| 管线 | 帧数 | 检测数 | 跟踪目标数 | 耗时（秒） | 端到端 FPS | 状态 |
-|---|---:|---:|---:|---:|---:|---|
-| YOLO + NvSORT 基线 | 301 | 1387 | 6 | 8.38 | **35.93** | 成功 |
-| YOLO + NvSORT + 3D Action（同步） | 301 | 1386 | 6 | 13.11 | **22.96** | 成功 |
-| Action 异步推理（含 EOS 收尾） | 300 | 1382 | 6 | 14.44 | 20.77 | 结果完整，drain 1.22 s |
-| 时序隔帧采样（subsample=1） | 301 | 1387 | 6 | 13.53 | 22.25 | 未提速 |
+| 管线 | 帧数 | 检测数 | 跟踪目标数 | 耗时（秒） | 端到端 FPS |
+|---|---:|---:|---:|---:|---:|
+| YOLO + NvSORT 基线 | 301 | 1387 | 6 | 8.38 | **35.93** |
+| YOLO + NvSORT + 3D Action（同步） | 301 | 1386 | 6 | 13.11 | **22.96** |
+| Action 异步推理（含 EOS 收尾） | 300 | 1382 | 6 | 14.44 | 20.77 |
+| 时序隔帧采样（subsample=1） | 301 | 1387 | 6 | 13.53 | 22.25 |
 
 同步 3D Action 测试中 `roi_restore_misses=0`；完整命令、输出文件和分析见
 [`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)。
