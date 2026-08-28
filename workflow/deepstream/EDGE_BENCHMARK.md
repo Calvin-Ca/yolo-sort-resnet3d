@@ -1,4 +1,4 @@
-# 边缘计算设备 Jetson Orin NX 实测
+# Jetson Orin NX 实测
 
 ## 测试环境
 

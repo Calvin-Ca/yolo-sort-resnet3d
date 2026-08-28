@@ -106,7 +106,7 @@ YOLOv5 和 YOLOv8 训练代码位于 [`yolo/`](yolo/)，项目脚本位于 [`yol
 
 动作识别训练入口为 [`3DResnet/main.py`](3DResnet/main.py)，支持 ResNet、ResNet2+1D、ResNeXt、Wide ResNet 和 DenseNet 等时空网络。端到端 TorchScript 模型可通过 [`3DResnet/export.py`](3DResnet/export.py) 导出。
 
-## 边缘计算设备 Jetson Orin NX 实测
+## Jetson Orin NX 实测
 
 DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 [`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)，
