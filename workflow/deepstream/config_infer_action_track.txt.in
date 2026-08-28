@@ -1,0 +1,15 @@
+[property]
+gpu-id=0
+model-engine-file=@ACTION_ENGINE@
+labelfile-path=@ACTION_LABELS@
+batch-size=4
+process-mode=2
+operate-on-gie-id=1
+classifier-async-mode=@ACTION_ASYNC@
+input-tensor-from-meta=1
+network-mode=2
+gie-unique-id=2
+network-type=1
+classifier-threshold=0.0
+output-tensor-meta=1
+tensor-meta-pool-size=12

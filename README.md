@@ -127,7 +127,7 @@ DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 |---|---:|---:|---:|---:|---:|---|
 | YOLO + NvSORT 基线 | 301 | 1387 | 6 | 8.38 | **35.93** | 成功 |
 | YOLO + NvSORT + 3D Action（同步） | 301 | 1386 | 6 | 13.11 | **22.96** | 成功 |
-| Action 异步推理 | 299 | 1377 | 6 | 13.21 | 22.64 | 未提速，10 条 pending |
+| Action 异步推理（含 EOS 收尾） | 300 | 1382 | 6 | 14.44 | 20.77 | 结果完整，drain 1.22 s |
 | 时序隔帧采样（subsample=1） | 301 | 1387 | 6 | 13.53 | 22.25 | 未提速 |
 
 同步 3D Action 测试中 `roi_restore_misses=0`；完整命令、输出文件和分析见

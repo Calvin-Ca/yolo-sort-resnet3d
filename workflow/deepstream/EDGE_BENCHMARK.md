@@ -19,7 +19,7 @@
 |---|---:|---:|---:|---:|---:|---|
 | YOLO + NvSORT 基线 | 301 | 1387 | 6 | 8.38 s | **35.93** | 成功 |
 | YOLO + NvSORT + 3D Action（同步） | 301 | 1386 | 6 | 13.11 s | **22.96** | 成功 |
-| Action `classifier-async-mode=1` | 299 | 1377 | 6 | 13.21 s | **22.64** | 未提速，存在 10 条 pending 元数据 |
+| Action `classifier-async-mode=1`（含 EOS 收尾） | 300 | 1382 | 6 | 14.44 s | **20.77** | 结果完整，drain 1.22 s |
 | 时序 `subsample=1`（隔帧采样） | 301 | 1387 | 6 | 13.53 s | **22.25** | 未提速 |
 
 同步 3D Action 测试输出：
@@ -35,5 +35,5 @@ benchmark/deepstream/native_fixed.summary.json
 
 object_id 时序键和 30 帧缓存已经正常工作，`roi_restore_misses=0`。当前
 端到端瓶颈主要在每帧多目标 ROI 裁剪、缩放、归一化及 GPU 时序缓存写入；
-简单启用二级分类异步模式或仅跳过缓存帧写入没有提升性能。后续应让非采样帧
+异步模式需要 EOS 收尾等待，结果完整但性能下降；仅跳过缓存帧写入也没有提升性能。后续应让非采样帧
 直接跳过 ROI 预处理，或减少 ROI 空间尺寸，并用 DeepStream/Nsight 分阶段测量。
