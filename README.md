@@ -121,15 +121,17 @@ DeepStream + NvSORT + 3D Action 的 Jetson Orin NX 端到端结果见
 
 ### Jetson Orin NX 实测结果（2026-08-28）
 
-| 管线 | 端到端 FPS | 状态 |
-|---|---:|---|
-| YOLO + NvSORT 基线 | **35.93** | 成功 |
-| YOLO + NvSORT + 3D Action（同步） | **22.96** | 成功 |
-| Action 异步推理 | 22.64 | 未提速 |
-| 时序隔帧采样（subsample=1） | 22.25 | 未提速 |
+环境：JetPack 5.1.1 / L4T 35.3.1、CUDA 11.4、TensorRT 8.5.2、DeepStream 6.2；输入为 H.264、2490×1400、10 FPS、约 30.1 秒（301 帧）。
 
-测试输入为 2490×1400、301 帧 H.264 视频；同步 3D Action 管线检测
-1386 个目标、跟踪目标数为 6，`roi_restore_misses=0`。
+| 管线 | 帧数 | 检测数 | 跟踪目标数 | 耗时（秒） | 端到端 FPS | 状态 |
+|---|---:|---:|---:|---:|---:|---|
+| YOLO + NvSORT 基线 | 301 | 1387 | 6 | 8.38 | **35.93** | 成功 |
+| YOLO + NvSORT + 3D Action（同步） | 301 | 1386 | 6 | 13.11 | **22.96** | 成功 |
+| Action 异步推理 | 299 | 1377 | 6 | 13.21 | 22.64 | 未提速，10 条 pending |
+| 时序隔帧采样（subsample=1） | 301 | 1387 | 6 | 13.53 | 22.25 | 未提速 |
+
+同步 3D Action 测试中 `roi_restore_misses=0`；完整命令、输出文件和分析见
+[`workflow/deepstream/EDGE_BENCHMARK.md`](workflow/deepstream/EDGE_BENCHMARK.md)。
 
 [`yolo/edge_pt/report/`](yolo/edge_pt/report/) 保存了不同模型、输入尺寸和批量大小在 Jetson Nano、Xavier NX、PC 等设备上的测试结果，可用于部署选型。
 
